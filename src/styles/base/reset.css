@@ -1,0 +1,142 @@
+/*
+  ===========================
+  base/base.css — Global reset styles
+  ===========================
+
+  These styles are intended to reset or normalize default browser styles, ensuring consistency across different browsers.
+  The goal is to eliminate the unwanted browser-specific styling such as margins, paddings, or borders on common HTML elements.
+*/
+
+/* Apply box-sizing to all elements to ensure that padding and border are included in the element's total width/height. */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Reset margin and padding for common HTML elements to 0 to avoid default styling issues across browsers. */
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+select,
+fieldset,
+form,
+textarea,
+input,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+main,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/*
+  Set display property for HTML5 semantic elements (e.g., article, section, header) to block.
+  This ensures that they behave like block elements by default, which is important for proper layout.
+*/
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+
+/*
+  Remove default list styling for navigation lists, such as bullets or numbers.
+  This is especially useful for custom styled navigation menus.
+*/
+nav ol,
+nav ul {
+  list-style: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}

@@ -1,0 +1,620 @@
+/*
+  =============================================================================
+  modules/avatars.css — Avatars styles
+  =============================================================================
+
+  This file defines the structure and style for the overall avatar listing interface, including
+  group sections, filtering, headers, controls, grid layout, and responsive behavior.
+
+  Uses BEM (Block Element Modifier) naming convention
+*/
+
+/* Block — avatars container */
+.avatars {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.avatars__header {
+  flex-grow: 0;
+  flex-shrink: 0;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 40px 20px;
+  background-color: #333;
+}
+
+@media screen and (max-width: 1200px) {
+  .avatars__header {
+    flex-direction: column;
+  }
+}
+
+/* Modifier — avatars header area sticky state */
+.avatars__header.is-sticky {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 20;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+/* Element — avatars hrader filter area */
+.avatars__header-filter {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: block;
+  width: 100%;
+}
+
+/* Element — avatars hrader actions */
+.avatars__header-actions {
+  flex-grow: 0;
+  flex-shrink: 0;
+  position: relative;
+  display: block;
+  width: auto;
+  padding-left: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+  .avatars__header-actions {
+    order: -99;
+    padding-left: 0;
+    padding-bottom: 30px;
+  }
+}
+
+/* Element — avatars hrader action */
+.avatars__header-action {
+  display: block;
+  width: 160px;
+  height: 40px;
+  padding: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Modifier — avatars hrader action hover effect */
+.avatars__header-action:hover {
+  opacity: 0.8;
+}
+
+/* Modifier — avatars hrader action hidden state */
+.avatars__header-action.is-hidden {
+  display: none;
+}
+
+/* Modifier — avatars hrader action role edit */
+.avatars__header-action_role_edit {
+  background-color: #54a0ff;
+}
+
+/* Modifier — avatars hrader action role confirm */
+.avatars__header-action_role_confirm {
+  background-color: #0fa;
+}
+
+/* Element — avatars content area */
+.avatars__content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: block;
+  width: 100%;
+  background-color: #000;
+}
+
+/* Element — avatars group */
+.avatars__group {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 40px 0;
+  border-bottom: 1px solid #333;
+}
+
+/* Element — avatars group handle */
+.avatars__group-handle {
+  position: absolute;
+  bottom: 100%;
+  right: 20px;
+  z-index: 10;
+  display: block;
+  width: 50px;
+  height: 30px;
+  background-color: #000;
+  border: 1px solid #333;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  cursor: move;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  text-align: center;
+}
+
+/* Element — avatars group handle icon */
+.avatars__group-handle:before {
+  content: url("data:image/svg+xml, %3Csvg width='8' height='20' version='1.1' viewBox='0 0 3.6 9' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m1.8 1.4748e-8c-0.20313 0-0.40628 0.078643-0.56127 0.23595l-1.1225 1.1393c-0.15498 0.15731-0.15498 0.41236 0 0.56966 0.15499 0.15731 0.40627 0.15731 0.56125 0l0.72563-0.7365v2.0831c0 0.22247 0.17768 0.40279 0.39687 0.40279s0.39687-0.18033 0.39687-0.40279v-2.0832l0.72561 0.73653c0.15502 0.15731 0.40628 0.15731 0.5613 0 0.15498-0.15731 0.15498-0.41235 0-0.56966l-1.1225-1.1393c-0.15498-0.15731-0.3581-0.23595-0.56123-0.23595zm-2.34e-5 5.3056c-0.21919 0-0.39687 0.18035-0.39687 0.40282v2.0831l-0.72561-0.7365c-0.15498-0.1573-0.40627-0.1573-0.56125 0-0.15498 0.1573-0.15498 0.41236 0 0.56966l1.1225 1.1393c0.30999 0.31459 0.81254 0.31468 1.1225 4.84e-5l1.1225-1.1393c0.15498-0.1573 0.15498-0.41234 0-0.56964-0.15498-0.1573-0.40628-0.1573-0.56125 0l-0.72566 0.73653v-2.0832c0-0.22247-0.17768-0.40282-0.39687-0.40282z' fill='%23ccc'/%3E%3C/svg%3E");
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  display: block;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  transform: translateX(-50%);
+}
+
+/* Modifier — avatars group handle hidden state */
+.avatars__group-handle.is-hidden {
+  display: none;
+}
+
+/* Element — avatars group header */
+.avatars__group-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* Element — avatars group title */
+.avatars__group-title {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: block;
+  width: 100%;
+  padding-right: 20px;
+  font-size: 24px;
+  line-height: 1;
+  font-weight: normal;
+  color: #ccc;
+}
+
+/* Element — avatars group title input */
+/* Element — avatars group numeric order input */
+.avatars__group-title-input,
+.avatars__group-order-input {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin-right: 20px;
+  padding: 0 15px;
+  font-size: 24px;
+  line-height: 30px;
+  font-style: italic;
+  color: #fff;
+  border-radius: 5px;
+  background-color: #333;
+  outline: none;
+}
+
+.avatars__group-order-input {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 60px;
+  text-align: center;
+}
+
+/* Modifier — avatars group title input focus highlight */
+/* Modifier — avatars group numeric order input focus highlight */
+.avatars__group-order-input:focus,
+.avatars__group-title-input:focus {
+  outline: 1px solid #0fa;
+}
+
+/* Element — avatars group numeric order input */
+.avatars__group-order-label {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: block;
+  width: 60px;
+  height: 40px;
+  margin-right: 20px;
+  font-size: 24px;
+  line-height: 40px;
+  color: #777;
+  text-align: center;
+  border: 1px solid #777;
+  border-radius: 5px;
+  background-color: transparent;
+  outline: none;
+}
+
+/* Element — avatars group dropdown toggle */
+.avatars__group-dropdown-action {
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  opacity: 0.4;
+  transition: all, 0.3s
+}
+
+/* Element — avatars group dropdown toggle arrow up icon */
+.avatars__group-dropdown-action:after {
+  content: url("data:image/svg+xml, %3Csvg width='40' height='20' fill='none' version='1.1' viewBox='0 0 15 9' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m14.673 8.6284c0.5199-0.55469 0.39638-1.4765-0.16464-1.9532-1.8278-2.0096-3.6496-4.0249-5.4812-6.031-0.78906-0.85042-2.2561-0.84999-3.0447 8.1852e-4 -1.9102 2.1008-3.823 4.2001-5.7217 6.3112-0.59035 0.7247-0.10646 2.0514 0.8818 2.0438 0.6755 8.288e-4 1.0106-0.65132 1.4385-1.0666 1.4046-1.5421 2.7974-3.0955 4.2094-4.6306 0.47282-0.46435 1.2812-0.31201 1.6387 0.21556 1.5757 1.7306 3.1395 3.4725 4.7226 5.1961 0.42291 0.40564 1.1443 0.35991 1.5212-0.086003z' fill='%23ccc'/%3E%3C/svg%3E");
+  display: block;
+  width: 40px;
+  height: 20px;
+}
+
+/* Element — avatars group dropdown toggle icon hover */
+.avatars__group-dropdown-action:hover {
+  opacity: 1;
+}
+
+/* Element — avatars group dropdown toggle arrow down icon when dropdown is hidden  */
+.avatars__group-dropdown-action.is-hidden:after {
+  content: url("data:image/svg+xml, %3Csvg width='40' height='20' fill='none' version='1.1' viewBox='0 0 15 9' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m13.863 0c-0.67549-8.5813e-4 -1.0106 0.65127-1.4384 1.0666-1.4046 1.5422-2.7974 3.0956-4.2094 4.6307-0.47279 0.46445-1.2812 0.31197-1.6387-0.21558-1.5757-1.7307-3.1395-3.4726-4.7226-5.1962-0.55402-0.55174-1.5584-0.22676-1.7709 0.50048-0.24146 0.58892 0.042833 1.2149 0.48491 1.6164 1.8043 1.9837 3.6025 3.9731 5.4106 5.9533 0.78903 0.8504 2.2561 0.85009 3.0447-6.66e-4 1.9102-2.1009 3.8229-4.2002 5.7216-6.3113 0.58015-0.73567 0.12153-2.0433-0.88183-2.0438z' fill='%23ccc'/%3E%3C/svg%3E");
+}
+
+/* Element — avatars group dropdown */
+.avatars__group-dropdown {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  transition: all 0.3s
+}
+
+/* Element — avatars group dropdown hidden state */
+.avatars__group-dropdown.is-hidden {
+  height: 0 !important;
+}
+
+/* Element — avatars group grid of avatar cards */
+.avatars__group-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  width: 100%;
+  padding: 40px 20px;
+}
+
+@media screen and (max-width: 600px) {
+  .avatars__group-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Element — avatars group actions */
+.avatars__group-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  padding: 0 20px;
+}
+
+@media screen and (max-width: 800px) {
+  .avatars__group-actions {
+    justify-content: center;
+  }
+}
+
+/* Element — avatars group action */
+.avatars__group-action {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: block;
+  width: 120px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s;
+}
+
+/* Modifier — avatars group action hover effect */
+.avatars__group-action:hover {
+  color: #000;
+  opacity: 0.8;
+}
+
+/* Modifier — avatars group action hidden state */
+.avatars__group-action.is-hidden {
+  display: none;
+}
+
+/* Modifier — space between avatars group actions */
+.avatars__group-action:not(:first-child) {
+  margin-left: 20px;
+}
+
+@media screen and (max-width: 800px) {
+  .avatars__group-action {
+    margin-left: 10px;
+    margin-right: 10px;
+
+  }
+  .avatars__group-action:not(:first-child) {
+    margin-left: 10px;
+  }
+}
+
+/* Modifier — avatars group action role confirm */
+/* Modifier — avatars group action role avatar add */
+.avatars__group-action_role_confirm,
+.avatars__group-action_role_avatar-add {
+  background-color: #0fa;
+}
+
+/* Modifier — avatars group action role edit */
+/* Modifier — avatars group action role delete */
+.avatars__group-action_role_edit,
+.avatars__group-action_role_delete {
+  width: 140px;
+  background-color: transparent;
+  border: 2px solid;
+}
+
+.avatars__group-action_role_edit {
+  border-color: #54a0ff;
+  color: #54a0ff;
+}
+
+.avatars__group-action_role_delete {
+  border-color: #ee5253;
+  color: #ee5253;
+}
+
+/* Modifier — avatars group action role edit hover effect */
+.avatars__group-action_role_delete:hover {
+  background-color: #ee5253;
+}
+
+/* Modifier — avatars group action role delete hover effect */
+.avatars__group-action_role_edit:hover {
+  background-color: #54a0ff;
+}
+
+/* Modifier — avatars group action role add */
+.avatars__group-action_role_add {
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  outline: none;
+  border-radius: 50%;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  border: 1px solid #333;
+  background-color: #000;
+  transition: all, 0.3s;
+  cursor: pointer;
+}
+
+/* Modifier — avatars group action add plus icon */
+.avatars__group-action_role_add:after {
+  content: url("data:image/svg+xml, %3Csvg width='20' height='20' version='1.1' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m11.538 1.5385c0-0.85096-0.6875-1.5385-1.5385-1.5385-0.85096 0-1.5385 0.6875-1.5385 1.5385v6.9231h-6.9231c-0.85096 0-1.5385 0.6875-1.5385 1.5385 0 0.85096 0.6875 1.5385 1.5385 1.5385h6.9231v6.9231c0 0.85096 0.6875 1.5385 1.5385 1.5385 0.85096 0 1.5385-0.6875 1.5385-1.5385v-6.9231h6.9231c0.85096 0 1.5385-0.6875 1.5385-1.5385 0-0.85096-0.6875-1.5385-1.5385-1.5385h-6.9231z' fill='%230fa'/%3E%3C/svg%3E");
+  display: block;
+  width: 20px;
+  height: 20px;
+  font-size: 30px;
+  line-height: 15px;
+}
+
+/* Modifier — avatars group action add position at the top of the group */
+.avatars__group-action_role_add.avatars__group-action_position_before {
+  bottom: 100%;
+  transform: translate(-50%, 50%);
+}
+
+/* Modifier — avatars group action add position at the bottom of the group */
+.avatars__group-action_role_add.avatars__group-action_position_after {
+  top: 100%;
+  transform: translate(-50%, -50%);
+}
+
+/* Modifier — avatars group action add hover effect */
+.avatars__group-action_role_add:hover {
+  background-color: #0fa
+}
+
+/* Modifier — avatars group action add plus icon hover effect */
+.avatars__group-action_role_add:hover:after {
+  content: url("data:image/svg+xml, %3Csvg width='20' height='20' version='1.1' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m11.538 1.5385c0-0.85096-0.6875-1.5385-1.5385-1.5385-0.85096 0-1.5385 0.6875-1.5385 1.5385v6.9231h-6.9231c-0.85096 0-1.5385 0.6875-1.5385 1.5385 0 0.85096 0.6875 1.5385 1.5385 1.5385h6.9231v6.9231c0 0.85096 0.6875 1.5385 1.5385 1.5385 0.85096 0 1.5385-0.6875 1.5385-1.5385v-6.9231h6.9231c0.85096 0 1.5385-0.6875 1.5385-1.5385 0-0.85096-0.6875-1.5385-1.5385-1.5385h-6.9231z' fill='%23000'/%3E%3C/svg%3E");
+}
+
+/* Modifier — space between avatars group actions */
+.avatars__group-action_role_add:not(:first-child) {
+  margin: 0;
+}
+
+@media screen and (max-width: 800px) {
+  .avatars__group-action_role_add:not(:first-child) {
+    margin: 0;
+  }
+}
+
+/* Modifier — hide avatars group action add position top for non first */
+.avatars__group:not(:first-child) .avatars__group-action_role_add.avatars__group-action_position_before,
+.avatars__group-action_role_add.is-hidden {
+  display: none;
+}
+
+/* Element — avatars footer area */
+.avatars__footer {
+  flex-grow: 0;
+  flex-shrink: 0;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 40px 20px;
+  background-color: #333;
+}
+
+/* Element — avatars footer actions */
+.avatars__footer-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Element — avatars footer actions group */
+.avatars__footer-actions-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+@media screen and (max-width: 400px) {
+  .avatars__footer-actions-group {
+    flex-direction: column;
+  }
+}
+
+/* Element — avatars footer action */
+.avatars__footer-action {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: block;
+  padding: 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Modifier — avatars action hover effect */
+.avatars__footer-action:hover {
+  color: #000;
+  opacity: 0.8;
+}
+
+/* Modifier — avatars action hidden state */
+.avatars__footer-action.is-hidden {
+  display: none;
+}
+
+/* Modifier — avatars action role export html */
+.avatars__footer-action_role_export-html {
+  width: 100%;
+  max-width: 340px;
+  height: 60px;
+  margin-bottom: 40px;
+  font-size: 24px;
+  background-color: #0fa;
+}
+
+/* Modifier — avatars action role export data */
+/* Modifier — avatars action role import data */
+.avatars__footer-action_role_export-data,
+.avatars__footer-action_role_import-data {
+  width: calc(50% - 10px);
+  max-width: 160px;
+  height: 40px;
+  background-color: transparent;
+}
+
+/* Modifier — avatars action role export data */
+.avatars__footer-action_role_export-data {
+  margin-right: 10px;
+  border: 2px solid #fd9644;
+  color: #fd9644;
+}
+
+/* Modifier — avatars action role edit hover effect */
+.avatars__footer-action_role_export-data:hover {
+  background-color: #fd9644;
+}
+
+@media screen and (max-width: 400px) {
+  .avatars__footer-action_role_export-data {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
+
+/* Modifier — avatars action role import data */
+.avatars__footer-action_role_import-data {
+  margin-left: 10px;
+  border: 2px solid #a29bfe;
+  color: #a29bfe;
+}
+
+/* Modifier — avatars action role edit hover effect */
+.avatars__footer-action_role_import-data:hover {
+  background-color: #a29bfe;
+}
+
+@media screen and (max-width: 400px) {
+  .avatars__footer-action_role_import-data {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+/* Element — avatars file input */
+.avatars__footer-file-input {
+  display: none;
+}
+
+/* Element — avatars footer version */
+.avatars__footer-version {
+  position: absolute;
+  right: 0;
+  left: 0;
+  bottom: 10px;
+  z-index: 100;
+  display: block;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #ccc;
+  opacity: 0.8;
+}
+
+/* Element — avatars footer version hidden state */
+.avatars__footer-version.is-hidden {
+  display: none;
+}

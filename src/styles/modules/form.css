@@ -1,0 +1,171 @@
+/*
+  =============================================================================
+  modules/form.css — Form styles
+  =============================================================================
+
+  This file contains styles for option toggles (styled checkboxes/radios),
+  textareas, and actions used in modal or inline forms.
+
+  Uses BEM (Block Element Modifier) naming convention
+*/
+
+/* Block — form container */
+.form {
+  display: block;
+  width: 100%;
+}
+
+/* Element — form options group */
+.form__options {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+/* Modifier — space between form options groups */
+.form__options:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+/* Element — form option */
+.form__option {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: block;
+  width: auto;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+/* Modifier — space between form options */
+.form__option:not(:last-child) {
+  margin-right: 15px;
+}
+
+/* Element — form hidden native input */
+.form__option > input {
+  display: none;
+}
+
+/* Element — form option label */
+.form__option > span {
+  position: relative;
+  display: block;
+  height: 20px;
+  padding-left: 25px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #fff;
+  text-align: left;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* Element — form option custom checkbox */
+.form__option > span:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #000;
+}
+
+/* Element — form option custom checkbox checkmark */
+.form__option > span:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  z-index: 10;
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background-color: #0fa;
+  visibility: hidden;
+}
+
+/* Modifier — highlight custom checkbox when input is checked */
+.form__option input:checked ~ span:before {
+  border-color: #0fa;
+}
+
+/* Modifier — show custom checkbox checkmark when input is checked */
+.form__option input:checked ~ span:after {
+  visibility: visible;
+}
+
+/* Element — form textarea */
+.form__textarea {
+  display: block;
+  width: 100%;
+  height: 320px;
+  margin-bottom: 40px;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 12px;
+  line-height: 1;
+  color: #0f0;
+  resize: none;
+  text-wrap: nowrap;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #000;
+}
+
+/* Modifier — highlight form textarea on focus */
+.form__textarea:focus {
+  border: 1px solid #555;
+  outline: 1px solid #0fa;
+}
+
+/* Element — form actions */
+.form__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Element — form action */
+.form__action {
+  display: block;
+  width: 100px;
+  height: 40px;
+  margin: 0 10px;
+  padding: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Modifier — reduce form action opacity on hover */
+.form__action:hover {
+  opacity: 0.8;
+}
+
+/* Modifier — form action role cancel */
+.form__action_role_cancel {
+  background-color: #999;
+}
+
+/* Modifier — form action role confirm */
+.form__action_role_confirm {
+  background-color: #0fa;
+}

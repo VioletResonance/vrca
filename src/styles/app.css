@@ -1,0 +1,55 @@
+/*
+  ===========================
+  app.css — Main stylesheet
+  ===========================
+
+  The file imports base styles of the application and styles for individual functional blocks.
+*/
+
+/* BASE */
+
+/*
+  ./base/reset.css — A file for resetting default browser styles to ensure consistent rendering across different platforms.
+  It eliminates the discrepancies in element rendering between different browsers.
+*/
+@import url(./base/reset.css);
+
+/*
+  ./base/base.css — The main stylesheet for the application, providing global styles such as fonts, colors, margins,
+  and basic styling for various elements like body, headings (h1), and paragraphs (p).
+*/
+@import url(./base/base.css);
+
+
+/* MODULES */
+
+/*
+  ./modules/avatars.css — Styles for the avatars section. It includes rules for displaying avatars, their layout and general actions
+*/
+@import url(./modules/avatars.css);
+
+/*
+  ./modules/avatar.css — Additional styles for an individual avatar. Includes specific styles for avatar cards:
+  image, name, description, features, platforms and actions styling.
+*/
+@import url(./modules/avatar.css);
+
+/*
+  ./modules/dialog.css — Styles for displaying dialog boxes within the application. It handles positioning and the visual design of dialog.
+*/
+@import url(./modules/dialog.css);
+
+/*
+  ./modules/filter.css — Styles for the filter section. It includes styling for filter elements like checkboxes, actions, as well as the layout of the filter interface.
+*/
+@import url(./modules/filter.css);
+
+/*
+  ./modules/form.css — Styles for forms. It includes styling for input fields, checkboxes, submit actions, and form layout.
+*/
+@import url(./modules/form.css);
+
+/*
+  ./modules/modal.css — Styles for modal windows. It controls positioning and visual appearance of modal window.
+*/
+@import url(./modules/modal.css);

@@ -1,0 +1,136 @@
+/*
+  =============================================================================
+  modules/dialog.css — Modal dialog styles
+  =============================================================================
+
+  Defines modal dialog styles used to present confirmation or alert messages.
+  Includes layout for overlay, dialog window, content, icon, and actions.
+
+  Uses BEM (Block Element Modifier) naming convention
+*/
+
+/* Block — dialog overlay */
+.dialog {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Modifier — dialog hidden state */
+.dialog.is-hidden {
+  display: none;
+}
+
+/* Element — dialog content */
+.dialog__window {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px 10px;
+  border-radius: 10px;
+  background-color: #333;
+}
+
+/* Element — dialog icon */
+.dialog__icon {
+  display: block;
+  width: 100%;
+  max-width: 80px;
+  margin: 0 auto 15px;
+}
+
+/* Element — dialog title */
+.dialog__title {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+}
+
+/* Modifier — dialog title role context */
+.dialog_role_alert .dialog__title,
+.dialog_role_error .dialog__title,
+.dialog_role_confirm .dialog__title {
+  color: #ee5253;
+}
+.dialog_role_warning .dialog__title {
+  color: #fd9644;
+}
+.dialog_role_success .dialog__title {
+  color: #20bf6b;
+}
+.dialog_role_info .dialog__title {
+  color: #54a0ff;
+}
+
+/* Element — dialog text */
+.dialog__text {
+  display: block;
+  width: 100%;
+  margin-bottom: 40px;
+  font-size: 18px;
+  line-height: 1.2;
+  color: #fff;
+  text-align: center;
+}
+
+/* Element — dialog  */
+.dialog__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Element — dialog action */
+.dialog__action {
+  display: block;
+  width: 100px;
+  height: 40px;
+  margin: 0 10px;
+  padding: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Modifier — reduce dialog action opacity on hover */
+.dialog__action:hover {
+  opacity: 0.8;
+}
+
+/* Modifier — dialog action hidden state */
+.dialog__action.is-hidden {
+  display: none;
+}
+
+/* Modifier — dialog action role cancel */
+.dialog__action_role_cancel {
+  background-color: #999;
+}
+
+/* Modifier — dialog action role confirm */
+/* Modifier — dialog action role dismiss */
+.dialog__action_role_confirm,
+.dialog__action_role_dismiss {
+  background-color: #0fa;
+}

@@ -1,0 +1,489 @@
+/*
+  =============================================================================
+  modules/avatar.css — Avatar card styles
+  =============================================================================
+
+  This file defines the appearance and behavior of a single avatar card,
+  including its layout, interaction states (hover, drag, hidden),
+  and its components such as image, name, platforms, features, and actions.
+
+  Uses BEM (Block Element Modifier) naming convention
+*/
+
+/* Block — avatar container */
+.avatar {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: #333;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+/* Modifier — highlights avatar on hover */
+.avatar:hover {
+  outline: 1px solid #0fa;
+}
+
+/* Modifier — avatar hidden state */
+.avatar.is-hidden {
+  display: none;
+}
+
+/* Modifier — avatar dragging interaction state */
+.avatar.is-draggable {
+  box-shadow: 0 0 25px 5px #54a0ff;
+  cursor: move;
+  transform: scale(0.8);
+}
+
+/* Modifier — avatar dragging interaction state hover effect */
+.avatar.is-draggable:hover {
+  outline: none;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Modifier — avatar dragging interaction state for not selected */
+.avatar.is-draggable:not(.is-chosen) {
+  opacity: 0.6;
+}
+
+.avatar.is-draggable:not(.is-chosen):hover {
+  opacity: 1;
+}
+
+/* Modifier — avatar dragging interaction selected state */
+.avatar.is-chosen {
+  transform: scale(1);
+}
+
+/* Modifier — avatar unavailable state */
+.avatar.is-unavailable {
+  opacity: 0.2;
+}
+
+/* Modifier — avatar unavailable state hover effect */
+.avatar.is-unavailable:hover {
+  opacity: 1;
+}
+
+/* Element — avatar content */
+.avatar__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+/* Element — avatar platform */
+.avatar__platforms {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+
+/* Modifier — show avatar platforms on hover */
+.avatar:hover .avatar__platforms {
+  opacity: 1;
+}
+
+/* Element — avatar platform */
+.avatar__platform {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 14px;
+  padding: 0 4px 0 2px;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  list-style: none;
+  border-radius: 7px;
+  background-color: #555;
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.8);
+}
+
+/* Modifier — spacing between avatar platforms */
+.avatar__platform:not(:last-child) {
+  margin-bottom: 5px;
+}
+
+/* Element — avatar platform indicator */
+.avatar__platform:before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* Modifiers — avatar platform types and colors */
+.avatar__platform_type_pc-optimized:before,
+.avatar__platform_type_android-optimized:before,
+.avatar__platform_type_ios-optimized:before {
+  background-color: #6ae854;
+}
+.avatar__platform_type_pc-not-optimized:before,
+.avatar__platform_type_android-not-optimized:before,
+.avatar__platform_type_ios-not-optimized:before {
+  background-color: #e55a42;
+}
+
+/* Element — avatar platform label */
+.avatar__platform:after {
+  content: "";
+  display: block;
+  padding-left: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 1;
+  color: #ccc;
+}
+
+/* Modifiers — avatar platform labels */
+.avatar__platform_type_pc-optimized:after,
+.avatar__platform_type_pc-not-optimized:after {
+  content: "PC";
+}
+.avatar__platform_type_android-optimized:after,
+.avatar__platform_type_android-not-optimized:after {
+  content: "Android";
+}
+.avatar__platform_type_ios-optimized:after,
+.avatar__platform_type_ios-not-optimized:after {
+  content: "iOS";
+}
+
+/* Element — avatar link */
+.avatar__link {
+  flex-grow: 0;
+  flex-shrink: 0;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding-top: 75%;
+  text-decoration: none;
+  background-color: #111;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 600px) {
+  .avatar__link {
+    padding-top: 60%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .avatar__link {
+    padding-top: 75%;
+  }
+}
+
+/* Element — avatar image preview */
+.avatar__image {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  opacity: 0.6;
+  transition: all 0.3s;
+}
+
+/* Modifier — darken image on hover */
+.avatar:hover .avatar__image {
+  opacity: 0.4;
+}
+
+/* Element — avatar info container (features, name, author, description) */
+.avatar__info {
+  flex-grow: 1;
+  flex-shrink: 1;
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 160px;
+  padding: 15px;
+  color: #fff;
+  background-color: #333;
+  transition: all 0.2s;
+}
+
+/* Modifier — show avatar info shadow on avatar hover */
+.avatar:hover .avatar__info {
+  box-shadow: inset 0 -160px 80px -80px rgba(0, 0, 0, 0.8);
+}
+
+/* Modifier — hide avatar info shadow on avatar dragging interaction state hover */
+.avatar.is-draggable:hover .avatar__info {
+  box-shadow: none;
+}
+
+/* Element — avatar features */
+.avatar__features {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.6;
+}
+
+/* Modifier — avatar features opacity on avatar hover */
+.avatar:hover .avatar__features {
+  opacity: 0.8;
+}
+
+/* Element — avatar feature */
+.avatar__feature {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: block;
+  min-width: 20px;
+  height: 11px;
+  padding: 0 3px;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  list-style: none;
+  border-radius: 3px;
+}
+
+/* Element — avatar feature label */
+.avatar__feature:after {
+  content: "";
+  display: block;
+  width: 100%;
+  font-size: 10px;
+  line-height: 11px;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+/* Modifier — spacing between avatar features */
+.avatar__feature:not(:last-child) {
+  margin-right: 10px;
+}
+
+/* Modifiers — avatar feature types and colors */
+.avatar__feature_type_gogoloco {
+  background-color: #54a0ff;
+}
+.avatar__feature_type_no-gogoloco {
+  background-color: #ff6b6b;
+}
+.avatar__feature_type_fly-mode {
+  background-color: #8395a7;
+}
+.avatar__feature_type_seat-place {
+  background-color: #ff9f43;
+}
+.avatar__feature_type_marker {
+  background-color: #f368e0;
+}
+.avatar__feature_type_vrcft {
+  background-color: #7158e2;
+}
+.avatar__feature_type_nsfw {
+  background-color: #000;
+}
+
+/* Modifiers — avatar feature labels */
+.avatar__feature_type_gogoloco:after,
+.avatar__feature_type_no-gogoloco:after {
+  content: "GGL";
+}
+.avatar__feature_type_fly-mode:after {
+  content: "FM";
+}
+.avatar__feature_type_seat-place:after {
+  content: "ST";
+}
+.avatar__feature_type_marker:after {
+  content: "M";
+}
+.avatar__feature_type_vrcft:after {
+  content: "VRCFT";
+}
+.avatar__feature_type_nsfw:after {
+  content: "NSFW";
+}
+
+/* Element — avatar name */
+.avatar__name {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 20px;
+  line-height: 1;
+  color: #0fa;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+
+/* Modifier — avatar name opacity on avatar hover */
+.avatar:hover .avatar__name {
+  opacity: 1;
+}
+
+/* Element — avatar author */
+.avatar__author {
+  display: block;
+  width: 100%;
+  margin: 0 0 5px;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1;
+  color: #0fa;
+  border: none;
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+
+/* Modifier — avatar author opacity on avatar hover */
+.avatar:hover .avatar__author {
+  opacity: 1;
+}
+
+/* Element — avatar description */
+.avatar__description {
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  line-height: 1;
+  color: #999;
+  text-shadow: none;
+  background: linear-gradient(to bottom, #999 100%, transparent);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s;
+}
+
+/* Modifier — avatar description opacity on avatar hover */
+.avatar:hover .avatar__description {
+  background: linear-gradient(to bottom, #999 8px, transparent);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.8;
+}
+
+/* Modifier — avatar description opacity on avatar dragging interaction state hover */
+.avatar.is-draggable:hover .avatar__description {
+  background: linear-gradient(to bottom, #999 100%, transparent);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 1;
+}
+
+.avatar__description::selection {
+  -webkit-text-fill-color: #000;
+}
+
+.avatar__description::-moz-selection {
+  -webkit-text-fill-color: #000;
+}
+
+/* Element — avatar actions */
+.avatar__actions {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 15px;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+/* Modifier — show avatar actions on avatar hover */
+.avatar:hover .avatar__actions {
+  opacity: 1;
+}
+
+/* Modifier — avatar actions hidden state */
+.avatar__actions.is-hidden {
+  display: none;
+}
+
+/* Element — avatar action */
+.avatar__action {
+  flex-grow: 0;
+  flex-shrink: 0;
+  display: block;
+  height: 20px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: bold;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.8);
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+/* Modifier — space between avatar actions */
+.avatar__action:not(:first-child) {
+  margin-left: 10px;
+}
+
+/* Modifier — avatar action role delete */
+.avatar__action_role_delete {
+  width: 80px;
+  color: #ee5253;
+  border-color: #ee5253;
+}
+
+/* Modifier — avatar action role edit */
+.avatar__action_role_edit {
+  width: 60px;
+  color: #54a0ff;
+  border-color: #54a0ff;
+}
+
+/* Modifier — avatar action hover effect */
+.avatar__action:hover {
+  color: #000;
+  background-color: #fff;
+  opacity: 0.8;
+}
+
+/* Modifier — avatar action delete hover effect */
+.avatar__action_role_delete:hover {
+  background-color: #ee5253;
+}
+
+/* Modifier — avatar action edit hover effect */
+.avatar__action_role_edit:hover {
+  background-color: #54a0ff;
+}

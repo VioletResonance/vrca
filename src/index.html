@@ -1,0 +1,339 @@
+<!--
+  ========================================
+  Entry Point — HTML
+  ========================================
+
+  This file is the base structure of the application.
+  It loads styles, javascript, and contains the layout scaffolding for UI components.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Avatars</title>
+    <meta name="description" content="VRC Avatars Library"/>
+    <!-- Favicon using embedded SVG -->
+    <link rel="icon" href="data:image/svg+xml, %3Csvg width='600mm' height='600mm' version='1.1' viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='600' height='600' rx='150' ry='150' fill='%230fa'/%3E%3C/svg%3E">
+    <!-- CSS entry point -->
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body>
+    <!-- Avatars module -->
+    <main class="avatars">
+      <div class="avatars__header">
+        <div class="avatars__header-filter">
+          <!-- Filter module -->
+          <div class="filter">
+            <div class="filter__controls">
+              <label class="filter__control">
+                <input type="checkbox" name="pc-optimized">
+                <span>PC Optimized</span>
+              </label>
+              <label class="filter__control">
+                <input type="checkbox" name="android-optimized">
+                <span>Android Optimized</span>
+              </label>
+              <label class="filter__control">
+                <input type="checkbox" name="ios-optimized">
+                <span>iOS Optimized</span>
+              </label>
+              <label class="filter__control">
+                <input type="checkbox" name="gogoloco">
+                <span>GoGoLoco</span>
+              </label>
+              <label class="filter__control">
+                <input type="checkbox" name="fly-mode">
+                <span>Fly Mode</span>
+              </label>
+              <label class="filter__control">
+                <input type="checkbox" name="seat-place">
+                <span>Seat Place</span>
+              </label>
+              <label class="filter__control">
+                <input type="checkbox" name="marker">
+                <span>Marker</span>
+              </label>
+              <label class="filter__control">
+                <input type="checkbox" name="vrcft">
+                <span>Face Tracking</span>
+              </label>
+              <label class="filter__control">
+                <input type="checkbox" name="nsfw">
+                <span>NSFW</span>
+              </label>
+              <label class="filter__control">
+                <input type="checkbox" name="unavailable">
+                <span>Unavailable</span>
+              </label>
+            </div>
+            <div class="filter__actions">
+              <button type="button" class="filter__action filter__action_role_reset is-hidden">Reset</button>
+            </div>
+          </div>
+        </div>
+        <div class="avatars__header-actions">
+          <button class="avatars__header-action avatars__header-action_role_confirm is-hidden">Confirm</button>
+          <button class="avatars__header-action avatars__header-action_role_edit">Edit Layout</button>
+        </div>
+      </div>
+      <div class="avatars__content">
+        <section class="avatars__group">
+          <div class="avatars__group-handle is-hidden">Move Group</div>
+          <button type="button" class="avatars__group-action avatars__group-action_role_add avatars__group-action_position_before is-hidden">Add Group</button>
+          <header class="avatars__group-header">
+            <h2 class="avatars__group-title">Lorem Ipsum</h2>
+            <button type="button" class="avatars__group-dropdown-action">Toggle Dropdown</button>
+          </header>
+          <div class="avatars__group-dropdown">
+            <div class="avatars__group-grid">
+              <!-- Avatar module -->
+              <div class="avatar">
+                <div class="avatar__content">
+                  <ul class="avatar__platforms">
+                    <li class="avatar__platform avatar__platform_type_pc-optimized" data-name="pc-optimized" title="PC Optimized">PC Optimized</li>
+                    <li class="avatar__platform avatar__platform_type_android-not-optimized" data-name="android-not-optimized" title="Android Not Optimized">Android Not Optimized</li>
+                    <li class="avatar__platform avatar__platform_type_ios-not-optimized" data-name="ios-not-optimized" title="iOS Not Optimized">iOS Not Optimized</li>
+                  </ul>
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="avatar__link">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAQAAAFp+lbbAAAACklEQVR42mPACwAAHgAB3XenRQAAAABJRU5ErkJggg==" alt="Avatar image" class="avatar__image">
+                  </a>
+                  <div class="avatar__info">
+                    <ul class="avatar__features">
+                      <li class="avatar__feature avatar__feature_type_gogoloco" data-name="gogoloco" title="GoGoLoco">GoGoLoco</li>
+                      <li class="avatar__feature avatar__feature_type_seat-place" data-name="seat-place" title="Seat Place">Seat Place</li>
+                      <li class="avatar__feature avatar__feature_type_vrcft" data-name="vrcft" title="Face Tracking">Face Tracking</li>
+                    </ul>
+                    <h2 class="avatar__name">Etiam ultricies et velit</h2>
+                    <p class="avatar__author">Mauris</p>
+                    <p class="avatar__description">Maecenas sit amet velit ut sapien elementum cursus dignissim at turpis</p>
+                  </div>
+                </div>
+                <div class="avatar__actions">
+                  <button type="button" class="avatar__action avatar__action_role_delete">Delete</button>
+                  <button type="button" class="avatar__action avatar__action_role_edit">Edit</button>
+                </div>
+              </div>
+              <div class="avatar is-unavailable">
+                <div class="avatar__content">
+                  <ul class="avatar__platforms">
+                    <li class="avatar__platform avatar__platform_type_pc-not-optimized" data-name="pc-not-optimized" title="PC Not Optimized">PC Not Optimized</li>
+                    <li class="avatar__platform avatar__platform_type_android-not-optimized" data-name="android-not-optimized" title="Android Not Optimized">Android Not Optimized</li>
+                    <li class="avatar__platform avatar__platform_type_ios-not-optimized" data-name="ios-not-optimized" title="iOS Not Optimized">iOS Not Optimized</li>
+                  </ul>
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="avatar__link">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAQAAAFp+lbbAAAACklEQVR42mPACwAAHgAB3XenRQAAAABJRU5ErkJggg==" alt="Avatar image" class="avatar__image">
+                  </a>
+                  <div class="avatar__info">
+                    <ul class="avatar__features">
+                      <li class="avatar__feature avatar__feature_type_no-gogoloco" data-name="no-gogoloco" title="No GoGoLoco">No GoGoLoco</li>
+                    </ul>
+                    <h2 class="avatar__name">Vivamus eget</h2>
+                    <p class="avatar__author">Morbi varius</p>
+                    <p class="avatar__description">Sed sapien nisi, eleifend nec iaculis sit amet, tempor ac quam</p>
+                  </div>
+                </div>
+                <div class="avatar__actions">
+                  <button type="button" class="avatar__action avatar__action_role_delete">Delete</button>
+                  <button type="button" class="avatar__action avatar__action_role_edit">Edit</button>
+                </div>
+              </div>
+              <div class="avatar">
+                <div class="avatar__content">
+                  <ul class="avatar__platforms">
+                    <li class="avatar__platform avatar__platform_type_pc-optimized" data-name="pc-optimized" title="PC Optimized">PC Optimized</li>
+                    <li class="avatar__platform avatar__platform_type_android-optimized" data-name="android-optimized" title="Android Optimized">Android Optimized</li>
+                    <li class="avatar__platform avatar__platform_type_ios-not-optimized" data-name="ios-not-optimized" title="iOS Not Optimized">iOS Not Optimized</li>
+                  </ul>
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="avatar__link">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAQAAAFp+lbbAAAACklEQVR42mPACwAAHgAB3XenRQAAAABJRU5ErkJggg==" alt="Avatar image" class="avatar__image">
+                  </a>
+                  <div class="avatar__info">
+                    <ul class="avatar__features">
+                      <li class="avatar__feature avatar__feature_type_gogoloco" data-name="gogoloco" title="GoGoLoco">GoGoLoco</li>
+                      <li class="avatar__feature avatar__feature_type_fly-mode" data-name="fly-mode" title="Fly Mode">Fly Mode</li>
+                    </ul>
+                    <h2 class="avatar__name">Aenean eget</h2>
+                    <p class="avatar__author">Aliquam</p>
+                    <p class="avatar__description">Vestibulum faucibus, nisl in pharetra auctor</p>
+                  </div>
+                </div>
+                <div class="avatar__actions">
+                  <button type="button" class="avatar__action avatar__action_role_delete">Delete</button>
+                  <button type="button" class="avatar__action avatar__action_role_edit">Edit</button>
+                </div>
+              </div>
+              <div class="avatar">
+                <div class="avatar__content">
+                  <ul class="avatar__platforms">
+                    <li class="avatar__platform avatar__platform_type_pc-not-optimized" data-name="pc-not-optimized" title="PC Not Optimized">PC Not Optimized</li>
+                    <li class="avatar__platform avatar__platform_type_android-optimized" data-name="android-optimized" title="Android Optimized">Android Optimized</li>
+                    <li class="avatar__platform avatar__platform_type_ios-optimized" data-name="ios-optimized" title="iOS Optimized">iOS Optimized</li>
+                  </ul>
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="avatar__link">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAQAAAFp+lbbAAAACklEQVR42mPACwAAHgAB3XenRQAAAABJRU5ErkJggg==" alt="Avatar image" class="avatar__image">
+                  </a>
+                  <div class="avatar__info">
+                    <ul class="avatar__features">
+                      <li class="avatar__feature avatar__feature_type_no-gogoloco" data-name="no-gogoloco" title="No GoGoLoco">GoGoLoco</li>
+                      <li class="avatar__feature avatar__feature_type_nsfw" data-name="nsfw" title="Not Safe For Work">Not Safe For Work</li>
+                    </ul>
+                    <h2 class="avatar__name">Cras consectetur</h2>
+                    <p class="avatar__author">Curabitur</p>
+                    <p class="avatar__description">Maecenas sit amet velit ut sapien elementum cursus dignissim at turpis</p>
+                  </div>
+                </div>
+                <div class="avatar__actions">
+                  <button type="button" class="avatar__action avatar__action_role_delete">Delete</button>
+                  <button type="button" class="avatar__action avatar__action_role_edit">Edit</button>
+                </div>
+              </div>
+              <div class="avatar">
+                <div class="avatar__content">
+                  <ul class="avatar__platforms">
+                    <li class="avatar__platform avatar__platform_type_pc-optimized" data-name="pc-optimized" title="PC Optimized">PC Optimized</li>
+                    <li class="avatar__platform avatar__platform_type_android-optimized" data-name="android-optimized" title="Android Optimized">Android Optimized</li>
+                    <li class="avatar__platform avatar__platform_type_ios-optimized" data-name="ios-optimized" title="iOS Optimized">iOS Optimized</li>
+                  </ul>
+                  <a href="#" target="_blank" rel="noopener noreferrer" class="avatar__link">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAQAAAFp+lbbAAAACklEQVR42mPACwAAHgAB3XenRQAAAABJRU5ErkJggg==" alt="Avatar image" class="avatar__image">
+                  </a>
+                  <div class="avatar__info">
+                    <ul class="avatar__features">
+                      <li class="avatar__feature avatar__feature_type_gogoloco" data-name="gogoloco" title="GoGoLoco">GoGoLoco</li>
+                      <li class="avatar__feature avatar__feature_type_fly-mode" data-name="fly-mode" title="Fly Mode">Fly Mode</li>
+                      <li class="avatar__feature avatar__feature_type_seat-place" data-name="seat-place" title="Seat Place">Seat Place</li>
+                      <li class="avatar__feature avatar__feature_type_marker" data-name="marker" title="Marker">Marker</li>
+                      <li class="avatar__feature avatar__feature_type_vrcft" data-name="vrcft" title="Face Tracking">Face Tracking</li>
+                      <li class="avatar__feature avatar__feature_type_nsfw" data-name="nsfw" title="Not Safe For Work">Not Safe For Work</li>
+                    </ul>
+                    <h2 class="avatar__name">Mauris sagittis</h2>
+                    <p class="avatar__author">Aliquam</p>
+                    <p class="avatar__description">Mauris ac scelerisque dolor</p>
+                  </div>
+                </div>
+                <div class="avatar__actions">
+                  <button type="button" class="avatar__action avatar__action_role_delete">Delete</button>
+                  <button type="button" class="avatar__action avatar__action_role_edit">Edit</button>
+                </div>
+              </div>
+            </div>
+            <div class="avatars__group-actions">
+              <button type="button" class="avatars__group-action avatars__group-action_role_confirm is-hidden">Confirm</button>
+              <button type="button" class="avatars__group-action avatars__group-action_role_delete is-hidden">Delete Group</button>
+              <button type="button" class="avatars__group-action avatars__group-action_role_edit is-hidden">Edit Group</button>
+              <button type="button" class="avatars__group-action avatars__group-action_role_avatar-add">Add Avatar</button>
+            </div>
+          </div>
+          <button type="button" class="avatars__group-action avatars__group-action_role_add avatars__group-action_position_after is-hidden">Add Group</button>
+        </section>
+        <section class="avatars__group">
+          <div class="avatars__group-handle is-hidden">Move Group</div>
+          <button type="button" class="avatars__group-action avatars__group-action_role_add avatars__group-action_position_before is-hidden">Add Group</button>
+          <header class="avatars__group-header">
+            <h2 class="avatars__group-title">Dolor Sit Amet</h2>
+            <button type="button" class="avatars__group-dropdown-action">Toggle Dropdown</button>
+          </header>
+          <div class="avatars__group-dropdown">
+            <div class="avatars__group-grid">
+            </div>
+            <div class="avatars__group-actions">
+              <button type="button" class="avatars__group-action avatars__group-action_role_confirm is-hidden">Confirm</button>
+              <button type="button" class="avatars__group-action avatars__group-action_role_delete is-hidden">Delete Group</button>
+              <button type="button" class="avatars__group-action avatars__group-action_role_edit is-hidden">Edit Group</button>
+              <button type="button" class="avatars__group-action avatars__group-action_role_avatar-add">Add Avatar</button>
+            </div>
+          </div>
+          <button type="button" class="avatars__group-action avatars__group-action_role_add avatars__group-action_position_after is-hidden">Add Group</button>
+        </section>
+      </div>
+      <div class="avatars__footer">
+        <div class="avatars__footer-actions">
+          <button class="avatars__footer-action avatars__footer-action_role_export-html">Save As HTML</button>
+          <div class="avatars__footer-actions-group">
+            <button type="button" class="avatars__footer-action avatars__footer-action_role_export-data">Export Data</button>
+            <button type="button" class="avatars__footer-action avatars__footer-action_role_import-data">Import Data</button>
+          </div>
+          <input class="avatars__footer-file-input" type="file" accept=".json" />
+        </div>
+        <p class="avatars__footer-version is-hidden"></p>
+      </div>
+    </main>
+    <!-- Modal window module -->
+    <div class="modal is-hidden">
+      <div class="modal__window">
+        <h2 class="modal__title">Avatar</h2>
+        <div class="modal__form">
+          <!-- Form module -->
+          <form class="form">
+            <div class="form__options">
+              <label class="form__option">
+                <input type="checkbox" name="pc-optimized">
+                <span>PC Optimized</span>
+              </label>
+              <label class="form__option">
+                <input type="checkbox" name="android-optimized">
+                <span>Android Optimized</span>
+              </label>
+              <label class="form__option">
+                <input type="checkbox" name="ios-optimized">
+                <span>iOS Optimized</span>
+              </label>
+            </div>
+            <div class="form__options">
+              <label class="form__option">
+                <input type="checkbox" name="gogoloco">
+                <span>GoGoLoco</span>
+              </label>
+              <label class="form__option">
+                <input type="checkbox" name="fly-mode">
+                <span>Fly Mode</span>
+              </label>
+              <label class="form__option">
+                <input type="checkbox" name="seat-place">
+                <span>Seat Place</span>
+              </label>
+              <label class="form__option">
+                <input type="checkbox" name="marker">
+                <span>Marker</span>
+              </label>
+              <label class="form__option">
+                <input type="checkbox" name="vrcft">
+                <span>Face Tracking</span>
+              </label>
+              <label class="form__option">
+                <input type="checkbox" name="nsfw">
+                <span>NSFW</span>
+              </label>
+              <label class="form__option">
+                <input type="checkbox" name="unavailable">
+                <span>Unavailable</span>
+              </label>
+            </div>
+            <textarea class="form__textarea" placeholder="Place avatar code here..."></textarea>
+            <div class="form__actions">
+              <button type="button" class="form__action form__action_role_cancel">Cancel</button>
+              <button type="submit" class="form__action form__action_role_confirm">Confirm</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Dialog window module -->
+    <div class="dialog is-hidden">
+      <div class="dialog__window">
+        <img class="dialog__icon" src="data:image/svg+xml, %3Csvg width='160' height='160' fill='none' version='1.1' viewBox='0 0 4.8 4.8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m2.4 0c-1.3255 0-2.4 1.0745-2.4 2.4 0 1.3255 1.0745 2.4 2.4 2.4 1.3255 0 2.4-1.0745 2.4-2.4 0-1.3255-1.0745-2.4-2.4-2.4zm0 0.43785c1.0837 0 1.9622 0.87849 1.9622 1.9622 0 1.0837-0.87849 1.9622-1.9622 1.9622-1.0837 0-1.9621-0.87849-1.9621-1.9622 0-1.0837 0.87848-1.9622 1.9621-1.9622zm0.00265 0.65284c-0.18164 0-0.3289 0.14636-0.3289 0.3269 0 0.18054 0.14726 0.32689 0.3289 0.32689 0.18164 0 0.3289-0.14635 0.3289-0.32689 0-0.18054-0.14726-0.3269-0.3289-0.3269zm-0.21927 0.87171c-0.1211 0-0.21929 0.097592-0.21929 0.21796 0 0.12036 0.098183 0.21796 0.21929 0.21796v0.87272c-0.1211 0-0.21929 0.097525-0.21929 0.21789 0 0.12036 0.098183 0.21796 0.21929 0.21796h0.43852c0.1211 0 0.21929-0.097588 0.21929-0.21796 0-0.12036-0.098184-0.21789-0.21929-0.21789v-1.3086z' fill='%2354a0ff'/%3E%3C/svg%3E" alt="Info icon">
+        <p class="dialog__title">Information</p>
+        <p class="dialog__text">Information</p>
+        <div class="dialog__actions">
+          <button type="button" class="dialog__action dialog__action_role_cancel is-hidden">Cancel</button>
+          <button type="button" class="dialog__action dialog__action_role_confirm is-hidden">Confirm</button>
+          <button type="button" class="dialog__action dialog__action_role_dismiss">Dismiss</button>
+        </div>
+      </div>
+    </div>
+    <!-- JS entry point -->
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

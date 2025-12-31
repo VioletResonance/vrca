@@ -1,0 +1,10 @@
+/*
+  ===========================
+  Entry Point — CSS
+  ===========================
+
+  This file serves as the main stylesheet entry point.
+  It imports the complete app styling including base resets and module styles.
+*/
+
+@import url(./styles/app.css);

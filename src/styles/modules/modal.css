@@ -1,0 +1,59 @@
+/*
+  =============================================================================
+  modules/modal.css — Modal window styles
+  =============================================================================
+
+  This file defines the visual appearance of modal overlays used for displaying
+  dialogs, forms, and messages. The layout includes an overlay background,
+  a centered modal window, title block, and an embedded form area.
+
+  Uses BEM (Block Element Modifier) naming convention
+*/
+
+/* Block — modal overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Modifier — modal hidden state */
+.modal.is-hidden {
+  display: none;
+}
+
+/* Element — modal content */
+.modal__window {
+  display: block;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #333;
+}
+
+/* Element — modal title */
+.modal__title {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  font-size: 24px;
+  line-height: 1;
+  color: #0fa;
+  text-align: center;
+}
+
+/* Element — modal form area */
+.modal__form {
+  display: block;
+  width: 100%;
+}

@@ -1,0 +1,53 @@
+/*
+  ===========================
+  base/base.css — Global base styles for the application
+  ===========================
+
+  This file provides global style rules that apply across the entire application.
+  It includes custom scrollbar appearance, text selection styling, and base typography and background colors.
+*/
+
+/* Custom scrollbar styles for WebKit browsers */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ccc;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #777;
+  border-radius: 6px;
+  border: 3px solid #ccc;
+}
+
+/* Custom scrollbar styles for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #777 #ccc;
+}
+
+/* Hover effect for scrollbar thumb (WebKit) */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* Text selection styles (WebKit and modern browsers) */
+*::selection {
+  background-color: #fff;
+  color: #000
+}
+
+*::-moz-selection {
+  background-color: #fff;
+  color: #000
+}
+
+/* Global font and color settings */
+body,
+html {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #fff;
+  background-color: #333;
+}
