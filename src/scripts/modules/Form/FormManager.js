@@ -204,7 +204,7 @@ class FormManager {
         const value = property === 'src' || property === 'href' ? element.getAttribute(property) : element[property];
         switch (property) {
           case 'href':
-            data[key] = (!value.includes('vrchat.com') || !'#') ? '#' : value;
+            data[key] = (!value.includes('go/vrchat')) ? '#' : value;
             break;
           case 'src':
             data[key] = (value.endsWith('img/fallback.webp')) ? this.config.settings.fallbackDataUri : value;

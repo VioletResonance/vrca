@@ -1,6 +1,6 @@
 {
   "name": "vrca",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "VRChat Offline Avatar Library",
   "main": "index.html",
   "scripts": {

@@ -72,9 +72,10 @@ This tool allows you to save and manage your favorite VRChat avatars locally, in
 │           ├── form.css
 │           └── modal.css
 ├── tools/
+│   ├── avatars.ps1
 │   └── avatars.sh
 └── vite/
-│   └── plugins/
+    └── plugins/
         ├── vite-plugin-move-scripts/
         │   └── index.js
         ├── vite-plugin-rename-files/
@@ -113,7 +114,7 @@ This tool allows you to save and manage your favorite VRChat avatars locally, in
 8. Import or Export your avatar collection:
     - Export: Press **Export JSON** to save your library in JSON format for easier transfer or backup.
     - Import: Press **Import JSON** to load previously saved collections and restore them into the library.
-9. Run [avatars-images.ps1](/tools/avatars-images.ps1) or [avatars-images.sh](/tools/avatars-images.sh) to download local copies of avatar images.
+9. Run [avatars.ps1](/tools/avatars.ps1) or [avatars.sh](/tools/avatars.sh) to download local copies of avatar images.
 
 **Be aware**: If you have unsaved changes, you will be warned when trying to leave or refresh the page.
 
@@ -122,14 +123,15 @@ Example HTML from VRCDB:
 ```html
 <div class="avatar-card">
   <div class="avatar-inner">
-    <a href="https://vrchat.com/home/avatar/avtr_935bce4d-b613-4658-8f0c-057c62b4eb41">
-      <img src="https://thumb.avtrdb.com/avtr_935bce4d-b613-4658-8f0c-057c62b4eb41.webp">
-    </a>
+    <div class="avatar-image-wrap">
+      <a href="/go/vrchat/a298FLiMRdJxtHORRZcrecpHl15goXtcpadmLdtSv9xcwbNi1tRc2l6WiUYWUNBHXPATeUY2euNOYGqGdMBdrEq3gEnWZ6">
+        <img src="/img/avatar?token=a298FLiMRdJxtHORRZcrecpHl15goXtcpadmLdtSv9xcwbNi1tRc2l6WiUYWUNBHXPATeUY2euNOYGqGdMBdrEq3gEnWZ6">
+      </a>
+    </div>
     <div class="card-content">
       <h2 class="avatar-name">vrcfox</h2>
       <p class="author-name">By trev3d</p>
       <p class="description">a minimalistic furry avatar</p>
-      <button class="vrc-button">VRCX</button>
     </div>
   </div>
 </div>
@@ -165,19 +167,20 @@ npm run preview
 
 ---
 
-## ⚙️ Image Download Script
+## ⚙️ Service Script
 
-This project provides script to download avatar thumbnails and replace remote URLs with local paths in `avatars.html`. The script:
+This project provides script to resolve avatar links, download avatar thumbnails, replace remote URLs with local paths in `avatars.html`. The script:
 
-- Scans `avatars.html` for all remote .webp thumbnails
+- Scans `avatars.html` for avatar tokens
+- Resolves redirect URL to avatar link and avatar image link
 - Downloads each image into the `/images` folder
-- Replaces remote image URLs with local paths
+- Replaces redirect URLs with avatar links and image local paths
 
 Choose the one matching your platform:
 
 1️⃣ PowerShell (Windows)
 
-Located in [/tools/avatars-images.ps1](/tools/avatars-images.ps1)
+Located in [/tools/avatars.ps1](/tools/avatars.ps1)
 
 Make sure PowerShell allows script execution. You may need to run as Administrator and set:
 
@@ -189,38 +192,31 @@ Set-ExecutionPolicy Unrestricted
 Run the script from the folder containing `avatars.html`:
 
 ```pwsh
-.\avatars-images.ps1`
-```
-
-Example output:
-
-```pwsh
-[~] Image search...
-[>] Downloading: avtr_abc000.webp
-[=] Already exist: avtr_xyz000.webp
-[~] Replacing links in HTML...
-[✓] Updated HTML saved: avatars.html
+.\avatars.ps1`
 ```
 
 2️⃣ Bash / Shell (Linux/macOS)
 
-Located in [/tools/avatars-images.sh](/tools/avatars-images.sh)
+Located in [/tools/avatars.sh](/tools/avatars.sh)
 
 Run the script from the folder containing `avatars.html`:
 
 ```sh
 chmod +x avatars.sh
-./avatars-images.sh
+./avatars.sh
 ```
 
 Example output:
 
 ```sh
-[~] Image search...
-[>] Downloading: avtr_abc000.webp
-[=] Already exist: avtr_xyz000.webp
-[~] Replacing links in HTML...
-[✓] Updated HTML saved: avatars.html
+[~] Searching for avatar tokens...
+[!] Avatar tokens not found
+[+] Avatar token: ...
+[+] Avatar ID: ...
+[=] Image already exists
+[~] Downloading image...
+[~] Updating links...
+[v] HTML updated: avatars.html
 ```
 
 ---
